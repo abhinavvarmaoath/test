@@ -22,8 +22,8 @@ def check_tickets():
         tickets = response.json().get("result", [])
         for ticket in tickets:
             description = ticket.get("short_description", "").lower()
-            if "abhinav" in description:
-                print("Upgrade script triggered for ticket:", ticket["number"])
+            if "upgrade vmanage" in description:
+                print("Upgrade vmanage script triggered for ticket:", ticket["number"])
     else:
         print("Failed to retrieve tickets:", response.status_code)
 
