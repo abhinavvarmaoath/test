@@ -24,6 +24,10 @@ def check_tickets():
             description = ticket.get("short_description", "").lower()
             if "upgrade vmanage" in description:
                 print("Upgrade vmanage script triggered for ticket:", ticket["number"])
+                # Write a flag to a file
+                with open('trigger_hello_world.txt', 'w') as f:
+                    f.write('run')
+                break
     else:
         print("Failed to retrieve tickets:", response.status_code)
 
