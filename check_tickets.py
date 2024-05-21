@@ -19,7 +19,7 @@ if response.status_code == 200:
     for ticket in tickets:
         description = ticket.get("short_description", "").lower()
         if (ticket['state'] != '6' or ticket['state'] != '7') and 'changed state to down' in description:
-            inputs = '5\n2\n3\n6\n'
+            inputs = '5\n2\n3\n7\n'
             process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
             process.communicate(inputs)
             # After the process, close the ticket
@@ -40,7 +40,7 @@ if response.status_code == 200:
             break
 
         if (ticket['state'] != '6' or ticket['state'] != '7') and  'backup' in description:
-            inputs = '2\n6\n'
+            inputs = '2\n7\n'
             process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
             process.communicate(inputs)
             # After the process, close the ticket
