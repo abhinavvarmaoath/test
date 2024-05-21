@@ -16,6 +16,7 @@ if response.status_code == 200:
     tickets = response.json().get("result", [])
     for ticket in tickets:
         description = ticket.get("short_description", "").lower()
-        print(description)
+        if ticket['active'] == 'true' and 'changed state to down' in description:
+             print("Upgrade ", ticket)
 else:
     print("Failed to retrieve tickets:", response.status_code)
