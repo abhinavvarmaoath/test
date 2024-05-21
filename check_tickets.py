@@ -18,7 +18,7 @@ if response.status_code == 200:
     tickets = response.json().get("result", [])
     for ticket in tickets:
         description = ticket.get("short_description", "").lower()
-        if (ticket['state'] == '6' or ticket['state'] == '7') and 'changed state to down' in description:
+        if (ticket['state'] != '6' or ticket['state'] != '7') and 'changed state to down' in description:
             inputs = '5\n2\n3\n6\n'
             process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
             process.communicate(inputs)
@@ -39,7 +39,7 @@ if response.status_code == 200:
                 print(f"Failed to close ticket {incident_number}: {close_response.status_code} - {close_response.text}")
             break
 
-        if (ticket['state'] == '6' or ticket['state'] == '7') and  'backup' in description:
+        if (ticket['state'] != '6' or ticket['state'] != '7') and  'backup' in description:
             inputs = '2\n6\n'
             process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
             process.communicate(inputs)
