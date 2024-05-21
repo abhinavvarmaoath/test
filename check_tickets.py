@@ -1,4 +1,6 @@
 import requests
+import subprocess
+
 username = 'aes.creator'
 password = 'A3%s!JbuhNO1'
 
@@ -17,6 +19,12 @@ if response.status_code == 200:
     for ticket in tickets:
         description = ticket.get("short_description", "").lower()
         if ticket['active'] == 'true' and 'changed state to down' in description:
-             print("Upgrade ", ticket)
+            print("Upgrade ", ticket)
+            # Prepare the inputs for main.py
+            inputs = '5\n2\n3\n6\n'
+            # Execute the main.py script with the inputs
+            process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
+            process.communicate(inputs)
+            break
 else:
     print("Failed to retrieve tickets:", response.status_code)
