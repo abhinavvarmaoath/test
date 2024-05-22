@@ -8,8 +8,8 @@ password = 'A3%s!JbuhNO1'
 base_url = 'https://dev263138.service-now.com/api/now/table/incident'
 
 ticket_data = {
-    'short_description': 'backup',
-    'description': 'backup',
+    'short_description': 'changed state to down',
+    'description': 'changed state to down',
     'priority': '1',
     'assignment_group': 'Service Desk',
 }
