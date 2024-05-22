@@ -26,10 +26,12 @@ if response.status_code == 200:
             incident_number = ticket['number']
             close_url = f"https://dev263138.service-now.com/api/now/table/incident/{ticket['sys_id']}"
             close_payload = {
-                "state": "7",  # Assuming '7' corresponds to the "Closed" state. Adjust based on your instance's state mapping.
+                "state": "7",
                 "active": "false",
                 "close_code": "Closed/Resolved by Caller",  # Adjust this field as necessary
-                "close_notes": "Automatically closed after processing"
+                "close_notes": "Automatically closed after processing",
+                "incident_state": "7",
+                "caller_id": "admin",
             }
 
             close_response = requests.put(close_url, auth=(username, password), headers=headers, data=json.dumps(close_payload))
@@ -50,7 +52,9 @@ if response.status_code == 200:
                 "state": "7",
                 "active": "false",
                 "close_code": "Closed/Resolved by Caller",  # Adjust this field as necessary
-                "close_notes": "Automatically closed after processing"
+                "close_notes": "Automatically closed after processing",
+                "incident_state": "7",
+                "caller_id": "admin",
             }
 
             close_response = requests.put(close_url, auth=(username, password), headers=headers,
