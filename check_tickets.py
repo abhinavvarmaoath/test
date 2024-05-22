@@ -18,7 +18,7 @@ if response.status_code == 200:
     tickets = response.json().get("result", [])
     for ticket in tickets:
         description = ticket.get("short_description", "").lower()
-        if (ticket['state'] != '6' or ticket['state'] != '7') and 'changed state to down' in description:
+        if ticket['close_notes'] != "Automatically closed after processing by jenkins" and 'changed state to down' in description:
             inputs = '5\n2\n3\n7\n'
             process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
             process.communicate(inputs)
@@ -28,8 +28,8 @@ if response.status_code == 200:
             close_payload = {
                 "state": "7",
                 "active": "false",
-                "close_code": "Closed/Resolved by Caller",  # Adjust this field as necessary
-                "close_notes": "Automatically closed after processing",
+                "close_code": "Closed/Resolved by Caller",
+                "close_notes": "Automatically closed after processing by jenkins",
                 "incident_state": "7",
                 "caller_id": "admin",
             }
@@ -41,7 +41,7 @@ if response.status_code == 200:
                 print(f"Failed to close ticket {incident_number}: {close_response.status_code} - {close_response.text}")
             break
 
-        if (ticket['state'] != '6' or ticket['state'] != '7') and  'backup' in description:
+        if ticket['close_notes'] != "Automatically closed after processing by jenkins" and  'backup' in description:
             inputs = '2\n7\n'
             process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
             process.communicate(inputs)
