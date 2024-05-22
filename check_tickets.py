@@ -52,7 +52,7 @@ if response.status_code == 200:
                 "state": "7",
                 "active": "false",
                 "close_code": "Closed/Resolved by Caller",  # Adjust this field as necessary
-                "close_notes": "Automatically closed after processing",
+                "close_notes": "Automatically closed after processing by jenkins",
                 "incident_state": "7",
                 "caller_id": "admin",
             }
