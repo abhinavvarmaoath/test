@@ -18,7 +18,7 @@ if response.status_code == 200:
     tickets = response.json().get("result", [])
     for ticket in tickets:
         description = ticket.get("short_description", "").lower()
-        if ticket['close_notes'] != "Automatically closed after processing by jenkins" and 'changed state to down' in description and ticket['urgency'] == '1':
+        if ticket['close_notes'] != "Automatically closed after processing by jenkins" and 'changed state to down' in description:
             inputs = '5\n2\n3\n7\n'
             process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
             process.communicate(inputs)
@@ -42,9 +42,9 @@ if response.status_code == 200:
             break
 
         if ticket['close_notes'] != "Automatically closed after processing by jenkins" and  'backup' in description:
-            inputs = '2\n7\n'
-            process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
-            process.communicate(inputs)
+            # inputs = '2\n7\n'
+            # process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
+            # process.communicate(inputs)
             # After the process, close the ticket
             incident_number = ticket['number']
             close_url = f"https://dev263138.service-now.com/api/now/table/incident/{ticket['sys_id']}"
