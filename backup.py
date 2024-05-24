@@ -1,7 +1,7 @@
 import requests
 import json
 
-username = 'aes.creator'
+username = 'admin'
 password = 'A3%s!JbuhNO1'
 
 # ServiceNow API endpoint
