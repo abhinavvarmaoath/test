@@ -2,7 +2,7 @@ import requests
 import subprocess
 import json
 
-username = 'aes.creator'
+username = 'admin'
 password = 'A3%s!JbuhNO1'
 
 # ServiceNow API endpoint
@@ -41,7 +41,7 @@ if response.status_code == 200:
                 print(f"Failed to close ticket {incident_number}: {close_response.status_code} - {close_response.text}")
             break
 
-        if ticket['close_notes'] != "Automatically closed after processing by jenkins" and  'backup' in description:
+        if ticket['close_notes'] != "Automatically closed after processing by jenkins" and  'Backup' in description:
             # inputs = '2\n7\n'
             # process = subprocess.Popen(['python3', 'main.py'], stdin=subprocess.PIPE, text=True)
             # process.communicate(inputs)
