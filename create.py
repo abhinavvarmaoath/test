@@ -1,11 +1,11 @@
 import requests
 import json
 
-username = 'aes.creator'
-password = 'A3%s!JbuhNO1'
+username = 'admin'
+password = 'LoMdP4gR^+7l'
 
 # ServiceNow API endpoint
-base_url = 'https://dev263138.service-now.com/api/now/table/incident'
+base_url = 'https://dev225865.service-now.com/api/now/table/incident'
 
 ticket_data = {
     'short_description': 'Alarm Management => Interface GigabitEthernet2, changed state to down for ciscoeightkv54',

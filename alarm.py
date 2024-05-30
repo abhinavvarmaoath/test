@@ -1,27 +1,25 @@
 import requests
 import subprocess
 import json
-
+incident_number=''
 username = 'admin'
-password = 'A3%s!JbuhNO1'
+password = 'LoMdP4gR^+7l'
 
 # ServiceNow API endpoint
-url = f"https://dev263138.service-now.com/api/now/table/incident"
+url1 = f"https://dev225865.service-now.com/api/now/table/incident"
 headers = {
     "Content-Type": "application/json",
     "Accept": "application/json"
 }
 
 # Authenticate with ServiceNow
-response = requests.get(url, auth=(username, password), headers=headers)
+response = requests.get(url1, auth=(username, password), headers=headers)
 if response.status_code == 200:
     tickets = response.json().get("result", [])
     for ticket in tickets:
-        description = ticket.get("short_description", "").lower()
-        if ticket['close_notes'] != "Automatically closed after processing by jenkins" and 'changed state to down' in description:
-            incident_number = ticket['number']
-            print(incident_number)
-            close_url = f"https://dev263138.service-now.com/api/now/table/incident/{ticket['sys_id']}"
+        if incident_number == ticket['number']:
+            description = ticket.get("short_description", "")
+            close_url = f"https://dev225865.service-now.com/api/now/table/incident/{ticket['sys_id']}"
             close_payload = {
                 "caller_id": "admin",
                 "short_description": description + ' --jenkins',

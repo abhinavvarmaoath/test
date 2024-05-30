@@ -3,10 +3,10 @@ import subprocess
 import json
 
 username = 'admin'
-password = 'A3%s!JbuhNO1'
+password = 'LoMdP4gR^+7l'
 
 # ServiceNow API endpoint
-url = f"https://dev263138.service-now.com/api/now/table/incident"
+url = f"https://dev225865.service-now.com/api/now/table/incident"
 headers = {
     "Content-Type": "application/json",
     "Accept": "application/json"
@@ -24,7 +24,7 @@ if response.status_code == 200:
             process.communicate(inputs)
             # After the process, close the ticket
             incident_number = ticket['number']
-            close_url = f"https://dev263138.service-now.com/api/now/table/incident/{ticket['sys_id']}"
+            close_url = f"https://dev225865.service-now.com/api/now/table/incident/{ticket['sys_id']}"
             close_payload = {
                 "state": "7",
                 "active": "false",
@@ -47,7 +47,7 @@ if response.status_code == 200:
             process.communicate(inputs)
             # After the process, close the ticket
             incident_number = ticket['number']
-            close_url = f"https://dev263138.service-now.com/api/now/table/incident/{ticket['sys_id']}"
+            close_url = f"https://dev225865.service-now.com/api/now/table/incident/{ticket['sys_id']}"
             close_payload = {
                 "state": "7",
                 "active": "false",
