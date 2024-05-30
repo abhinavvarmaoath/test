@@ -2,10 +2,10 @@ import requests
 import json
 
 username = 'admin'
-password = 'A3%s!JbuhNO1'
+password = 'LoMdP4gR^+7l'
 
 # ServiceNow API endpoint
-base_url = 'https://dev263138.service-now.com/api/now/table/incident'
+base_url = 'https://dev225865.service-now.com/api/now/table/incident'
 
 ticket_data = {
     'short_description': 'Configuration Backup',
